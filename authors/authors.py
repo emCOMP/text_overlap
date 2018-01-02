@@ -6,7 +6,7 @@ from scipy import spatial
 import numpy as np
 from difflib import SequenceMatcher
 
-df = pd.read_csv('scraped_articles_01.csv', delimiter=',')
+df = pd.read_csv('scraped_filtered_articles.csv', delimiter=',')
 
 texts = df.loc[:, ["Text", "Article URL", "Authors"]]
 texts = texts.dropna(subset=["Text", "Article URL"])
@@ -33,7 +33,7 @@ for i in range(0, len(authors)):
 		a = a.replace("'", "")
 		auths_pre = a.split(',')
 		auths_pre = [x.strip() for x in auths_pre]
-		#conditios to be useful
+		#conditions to be useful
 		auths = [x for x in auths_pre if( x not in months and x not in blacklist and len(x) > 3)]
 		set_of_auths.update(auths)
 

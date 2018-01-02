@@ -3,6 +3,12 @@
 #Sorts the nodes in each connected component by date (earliest first)
 #Ouputs these urls, with the most-copied articles first
 
+#Ouput style:
+	#Each row is a component (1 article that is copied)
+	#Each cell is a different iteration of that article
+	#Iterations are ordered by date, earliest to the left
+	#Only articles that have at least 2 iterations are shown
+
 import pandas as pd
 import numpy as np
 import datetime
