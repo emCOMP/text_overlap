@@ -39,9 +39,10 @@ for r in rows:
 	for c in cols:
 		if(not r==c):
 			tot = df.loc[r, c] + df.loc[c, r]
-			#each edge needs a unique 'name' - here it's just a count
-			G.addEdge(count, r, c, tot)
-			count = count + 1
+			if(tot > 0):
+				#each edge needs a unique 'name' - here it's just a count
+				G.addEdge(count, r, c, tot)
+				count = count + 1
 	count_r = count_r + 1
 
 output_file=open("domain_count_graph.gexf","w")
