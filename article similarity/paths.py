@@ -43,7 +43,7 @@ urls2 = urls[:]
 #Add edges
 for r in urls:
 	for c in urls2:
-		if(df.loc[r, c] > .85):
+		if(df.loc[r, c] > .65):
 			r_date = datetime.datetime.strptime(str(dates.loc[r, "first_ts"]), '%Y-%m-%d %H:%M:%S')
 			c_date = datetime.datetime.strptime(str(dates.loc[c, "first_ts"]), '%Y-%m-%d %H:%M:%S')
 			if(r_date < c_date):
@@ -51,7 +51,7 @@ for r in urls:
 			else:
 				G.add_edge(c, r, similarity=df.loc[r, c])
 
-with open("paths.csv", 'w') as f: 
+with open("paths_65.csv", 'w') as f: 
 	writer = csv.writer(f)
 	#get components and sort
 	for comp in sorted(nx.weakly_connected_components(G)):
