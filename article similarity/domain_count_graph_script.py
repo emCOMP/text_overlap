@@ -15,7 +15,7 @@ sys.path.append('../gexf')
 from gexf import Gexf, GexfImport
 
 
-df = pd.read_csv('domain_path_count.csv', delimiter=',', index_col=0)
+df = pd.read_csv('domain_path_count_65.csv', delimiter=',', index_col=0)
 
 rows = list(df.index)
 cols = list(df.columns.values)
@@ -45,7 +45,7 @@ for r in rows:
 				count = count + 1
 	count_r = count_r + 1
 
-output_file=open("domain_count_graph.gexf","w")
+output_file=open("domain_count_graph_65.gexf","w")
 gexf.write(output_file)
 
 
