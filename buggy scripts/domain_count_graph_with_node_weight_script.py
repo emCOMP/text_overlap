@@ -37,9 +37,7 @@ for r in rows:
 	if not r in urls:
 		print r
 	else:
-		if "russia" in r:
-			print "r " + r
-			print counts.loc[r, :].values[0]
+		#get weight from separat file
 		c = counts.loc[r, :].values[0]
 	G.add_node(r, freq=int(c))
 
@@ -49,10 +47,10 @@ count_r = 0
 for r in rows:
 	print("r" + str(count_r))
 	for c in cols:
+		#dont do diagonals
 		if(not r==c):
-			tot = df.loc[r, c] - df.loc[c, r]
-			if not (df.loc[r, c] == 0  and df.loc[c, r]==0):
-				#each edge needs a unique 'name' - here it's just a count
+			tot = df.loc[r, c] + df.loc[c, r]
+			if not (tot==0):
 				G.add_edge(r, c, weight=tot)
 				count = count + 1
 	count_r = count_r + 1
